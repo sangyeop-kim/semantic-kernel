@@ -49,6 +49,7 @@ class HuggingFaceTextCompletion(TextCompletionClientBase):
                 for possible values).
 
         Note that this model will be downloaded from the Hugging Face model hub.
+        hihi
         """
         self._model_id = model_id
         self._task = "text2text-generation" if task is None else task
@@ -65,9 +66,7 @@ class HuggingFaceTextCompletion(TextCompletionClientBase):
             )
 
         self.device = (
-            "cuda:" + str(device)
-            if device >= 0 and torch.cuda.is_available()
-            else "cpu"
+            "cuda:" + str(device) if device >= 0 and torch.cuda.is_available() else "cpu"
         )
 
         self.generator = transformers.pipeline(
